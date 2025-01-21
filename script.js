@@ -270,6 +270,7 @@ function handlePlayerCollisions(playerCapsule) {
 
     // If the player is near the exit, redirect to the respective URL
     if (distance < 0.5) {  // You can adjust the threshold (2) for proximity
+      window.history.replaceState(null, '', window.location.href);
       window.location.href = exit.url;
       return;  // Exit after the redirection to prevent multiple triggers
     }
@@ -353,3 +354,14 @@ function onWindowResize() {
   renderer.setSize(window.innerWidth, window.innerHeight)
   render()
 }
+
+window.addEventListener("pageshow", function (e) {
+    // Reload the page
+    var historyTraversal = event.persisted ||
+                         ( typeof window.performance != "undefined" &&
+                              window.performance.navigation.type === 2 );
+    if (historyTraversal) {
+        // If it's the YouTube page (or other exit page), force a reload of index.html
+        window.location.reload();
+    }
+  });
