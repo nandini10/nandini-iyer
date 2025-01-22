@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THINGS I'VE MADE..</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .title-container {
+            margin: 20px 0;
+        }
+
+        .title-container img {
+            max-width: 100vw;
+            height: auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 15px;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .grid img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+        background: #333;
+        padding: 20px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        max-width: 900px;
+        width: 90%;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-image-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    flex-shrink: 0; /* Ensure this section doesn't shrink */
+}
+
+.modal-main-image {
+    max-width: 600px; /* Consistent size across images */
+    max-height: 400px; /* Consistent height */
+    object-fit: contain;
+    border-radius: 12px;
+    aspect-ratio: 16 / 9;
+}
+
+    .modal-text {
+        text-align: left;
+        font-size: 16px;
+        color: #ccc;
+        overflow-y: auto;
+        max-height: 400px;
+        padding: 10px;
+        flex: 1;
+    }
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: red;
+        }
+
+        .modal-nav {
+    flex-shrink: 0; /* Ensure arrows don't shrink */
+    width: 40px; /* Fixed size for arrows */
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #555;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.modal-nav:hover {
+    background: #777;
+}
+        .modal-prev {
+            position: relative;
+        }
+
+        .modal-next {
+            position: relative;
+        }
+
+        .modal-dots {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 10px;
+          width: 100%;
+      }
+
+      .modal-dot {
+          width: 10px;
+          height: 10px;
+          background: #777;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: background 0.3s ease;
+      }
+
+      .modal-dot.active {
+          background: white;
+      }
+      .maze-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-colour: #3498db;
+        colour: white;
+        padding: 15px;
+        border-radius: 50%;
+        font-size: 24px;
+        text-align: centre;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        transition: background-colour 0.3s ease;
+        z-index: 1000;
+        cursor: pointer;
+      }
+
+      .maze-icon:hover {
+        background-colour: #2980b9;
+      }
+
+      .maze-icon i {
+        margin: 0;
+      }
+    </style>
+</head>
+<body>
+    <!-- Title container -->
+    <div class="title-container">
+        <img src="art_imgs/header-creative.png" alt="Title" id="pdf-title">
+    </div>
+
+    <!-- Image grid -->
+    <div class="grid">
+        <img src="art_imgs/reversible_vest_1.png" alt="Reversible Vest" data-images="art_imgs/reversible_vest_1.png,art_imgs/reversible_vest_2.png,art_imgs/reversible_vest_3.png,art_imgs/reversible_vest_4.png" data-description="For Fredie's bday! One side denim front/brown back/gingham pockets and shoulders. Other side is funky.. talkin lime green back, gingham front, and orange shoulders.">
+        <img src="art_imgs/chicken_hatV2_1.png" alt="Chicken Hat 2.0" data-images="art_imgs/chicken_hatV2_1.png,art_imgs/chicken_hatV2_0.JPG,art_imgs/chicken_hatV2_2.png,art_imgs/chicken_hatV2_3.png" data-description="A more socially acceptable chicken hat, with a hidden snap pocket to store some treats.">
+        <img src="art_imgs/OG_chicken_hat_1.png" alt="The OG Chicken Hat" data-images="art_imgs/OG_chicken_hat_1.png,art_imgs/OG_chicken_hat_2.JPG,art_imgs/OG_chicken_hat_4.png,art_imgs/OG_chicken_hat_5.png" data-description="This one came straight from the heart..">
+        <img src="art_imgs/seagull_sleeves_1.png" alt="Seagull x Sleeves" data-images="art_imgs/seagull_sleeves_1.png,art_imgs/seagull_sleeves_2.png" data-description="Made some band merch for me and Fred's band.. W some fun lil sleeves that were upcycled from old trousers.">
+    </div>
+
+    <!-- Modal -->
+    <!-- <div class="modal" id="image-modal">
+        <button class="modal-close" id="modal-close">&times;</button>
+        <div class="modal-content">
+            <div class="modal-image-container">
+                <button class="modal-nav modal-prev" id="modal-prev">&#8249;</button>
+                <img class="modal-main-image" id="modal-main-image" src="" alt="Main Image">
+                <button class="modal-nav modal-next" id="modal-next">&#8250;</button>
+            </div>
+            <div class="modal-text" id="modal-text"></div>
+            <div class="modal-dots" id="modal-dots"></div>
+        </div>
+    </div> -->
+
+    <div class="modal" id="image-modal">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <div class="modal-content">
+        <div>
+          <div class="modal-image-container">
+              <button class="modal-nav modal-prev" id="modal-prev">&#8249;</button>
+              <img class="modal-main-image" id="modal-main-image" src="" alt="Main Image">
+              <button class="modal-nav modal-next" id="modal-next">&#8250;</button>
+          </div>
+          <div class="modal-dots" id="modal-dots"></div>
+        </div>
+        <div>
+          <h2 id="modal-title" style="color: white; font-size: 24px; margin: 20px 0;"></h2>
+          <div class="modal-text" id="modal-text"></div>
+        </div>
+      </div>
+    </div>
+
+    <a href="../index.html" class="maze-icon" title="Back to Maze">
+      <i class="fa fa-map"></i> <!-- Font Awesome Maze Icon -->
+    </a>
+
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('image-modal');
+        const modalMainImage = document.getElementById('modal-main-image');
+        const modalText = document.getElementById('modal-text');
+        const closeModal = document.getElementById('modal-close');
+        const gridImages = document.querySelectorAll('.grid img');
+        const modalPrev = document.getElementById('modal-prev');
+        const modalNext = document.getElementById('modal-next');
+        const modalDots = document.getElementById('modal-dots');
+
+        let currentImages = [];
+        let currentIndex = 0;
+
+        function updateModalContent() {
+            // Enforce a fixed height for all modal images
+            const fixedWidth = 400; // Width of the modal-content
+            const fixedAspectRatio = 10 / 9; // Desired aspect ratio for images
+
+            // Adjust modal image dimensions
+            const modalHeight = fixedWidth / fixedAspectRatio;
+            modalMainImage.style.width = `${fixedWidth}px`;
+            modalMainImage.style.height = `${modalHeight}px`;
+
+            // Update image source and active dot
+            modalMainImage.src = currentImages[currentIndex];
+            const dots = Array.from(modalDots.children);
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function createDots() {
+            modalDots.innerHTML = '';
+            currentImages.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('modal-dot');
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateModalContent();
+                });
+                modalDots.appendChild(dot);
+            });
+        }
+
+        gridImages.forEach(image => {
+            image.addEventListener('click', () => {
+                currentImages = image.getAttribute('data-images').split(',');
+                const description = image.getAttribute('data-description');
+                const title = image.alt;
+                currentIndex = 0;
+
+                // Set initial main image and description
+                modalMainImage.src = currentImages[currentIndex];
+                modalText.textContent = description;
+                modalText.style.fontSize = '20px';
+                document.getElementById('modal-title').textContent = title; // Set the modal title
+                document.getElementById('modal-title').style.textAlign = 'center'
+                // Create navigation dots
+                createDots();
+
+                // Show modal
+                modal.style.display = 'flex';
+                updateModalContent();
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        modalPrev.addEventListener('click', () => {
+            if (currentImages.length > 0) {
+                currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+                updateModalContent();
+            }
+        });
+
+        modalNext.addEventListener('click', () => {
+            if (currentImages.length > 0) {
+                currentIndex = (currentIndex + 1) % currentImages.length;
+                updateModalContent();
+            }
+        });
+    </script>
+</body>
+</html>

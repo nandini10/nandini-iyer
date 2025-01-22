@@ -4,8 +4,60 @@ import { Octree } from 'https://unpkg.com/three@0.171.0/examples/jsm/math/Octree
 import { OrbitControls } from 'https://unpkg.com/three@0.171.0/examples/jsm/controls/OrbitControls.js';
 // import { PointerLockControls } from 'https://unpkg.com/three@0.171.0/examples/jsm/controls/PointerLockControls.js';
 
+// *******************************
+// *******  MODAL SETUP     *******
+// *******************************
 
-// Scene setup
+let isModalOpen = true;
+
+// Show the modal on page load
+window.onload = function () {
+  const popup = document.getElementById("popup");
+  const closeBtn = document.getElementById("close-btn");
+  const closeFooterBtn = document.getElementById("close-btn-footer");
+
+  // Disable game controls when the modal is open
+  document.addEventListener("keydown", preventControls);
+
+  // Close the modal when clicking the "X" button
+  closeBtn.addEventListener("click", closeModal);
+
+  // Close the modal when clicking the "Start Game" button
+  closeFooterBtn.addEventListener("click", closeModal);
+
+  // Close the modal if clicking outside the modal
+  popup.addEventListener("click", (event) => {
+    if (event.target === popup) {
+      closeModal();
+    }
+  });
+};
+
+// Function to close the modal and enable game controls
+function closeModal() {
+  const popup = document.getElementById("popup");
+  popup.style.display = "none";
+  isModalOpen = false;
+
+  // Re-enable game controls
+  document.removeEventListener("keydown", preventControls);
+}
+
+// Prevent game controls from working when the modal is open
+function preventControls(event) {
+  if (isModalOpen) {
+    const blockedKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "w", "a", "s", "d", "q", "e", "W", "A", "S", "D", "Q", "E"];
+    if (blockedKeys.includes(event.key.toLowerCase())) {
+      event.preventDefault();
+      console.log(`Key "${event.key}" is disabled while the modal is open.`);
+    }
+  }
+}
+
+    // *******************************
+    // *******  SCENE SETUP     *******
+    // *******************************
+
 const scene = new THREE.Scene();
 // scene.background = new THREE.Color(0x87CEEB); // Light blue sky background
 
@@ -29,7 +81,7 @@ const mazeHeight = 21;
 //   { x: 0, z: Math.floor(mazeHeight / 2), url: "endpoints/contact.html" }                  // Left edge (contact or any other page)
 // ];
 const exitPositions = [
-  { x: Math.floor(mazeWidth / 2), z: 0, url: "https://www.youtube.com/watch?v=ow5XgHDkPOQ" },               // Top edge (publication)
+  { x: Math.floor(mazeWidth / 2), z: 0, url: "endpoints/creative.html" },               // Top edge (publication)
   { x: mazeWidth - 1, z: Math.floor(mazeHeight / 2), url: "https://www.youtube.com/watch?v=ow5XgHDkPOQ" },          // Right edge (CV)
   { x: Math.floor(mazeWidth / 2), z: mazeHeight - 1, url: "https://www.youtube.com/watch?v=ow5XgHDkPOQn" },     // Bottom edge (projects)
   { x: 0, z: Math.floor(mazeHeight / 2), url: "https://www.youtube.com/watch?v=ow5XgHDkPOQ" }                  // Left edge (contact or any other page)
@@ -189,22 +241,26 @@ function drawMiniMap(playerCapsule) {
 
 // Handle keyboard input
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'ArrowUp' || event.key === 'w') forward = true;
-  if (event.key === 'ArrowDown' || event.key === 's') backward = true;
-  if (event.key === 'ArrowLeft' || event.key === 'a') rotateLeft = true;
-  if (event.key === 'ArrowRight' || event.key === 'd') rotateRight = true;
-  if (event.key === 'q') lookUp = true;
-  if (event.key === 'e') lookDown = true;
+  if (!isModalOpen) {
+    if (event.key === 'ArrowUp' || event.key === 'w' || event.key === 'W') forward = true;
+    if (event.key === 'ArrowDown' || event.key === 's' || event.key === 'A') backward = true;
+    if (event.key === 'ArrowLeft' || event.key === 'a' || event.key === 'S') rotateLeft = true;
+    if (event.key === 'ArrowRight' || event.key === 'd' || event.key === 'D') rotateRight = true;
+    if (event.key === 'q' || event.key === 'Q') lookUp = true;
+    if (event.key === 'e'  || event.key === 'E') lookDown = true;
+  }
 
 });
 
 document.addEventListener('keyup', (event) => {
-  if (event.key === 'ArrowUp' || event.key === 'w') forward = false;
-  if (event.key === 'ArrowDown' || event.key === 's') backward = false;
-  if (event.key === 'ArrowLeft' || event.key === 'a') rotateLeft = false;
-  if (event.key === 'ArrowRight' || event.key === 'd') rotateRight = false;
-  if (event.key === 'q') lookUp = false;
-  if (event.key === 'e') lookDown = false;
+  if (!isModalOpen) {
+    if (event.key === 'ArrowUp' || event.key === 'w' || event.key === 'W') forward = false;
+    if (event.key === 'ArrowDown' || event.key === 's' || event.key === 'A') backward = false;
+    if (event.key === 'ArrowLeft' || event.key === 'a' || event.key === 'S') rotateLeft = false;
+    if (event.key === 'ArrowRight' || event.key === 'd' || event.key === 'D') rotateRight = false;
+    if (event.key === 'q' || event.key === 'Q') lookUp = false;
+    if (event.key === 'e' || event.key === 'E') lookDown = false;
+  }
 
 });
 
