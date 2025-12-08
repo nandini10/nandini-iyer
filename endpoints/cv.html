@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nandini's CV & Publications</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+          font-family: 'Roboto', sans-serif;
+          margin: 0;
+          padding: 0;
+          color: #333;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          min-height: 100vh; /* ensures body fills viewport */
+          background: linear-gradient(-45deg, #f4f4f9, #dfe3f0, #e0e6f5, #cfd8e5);
+          background-size: 400% 400%;
+          animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+          0% {background-position: 0% 50%;}
+          50% {background-position: 100% 50%;}
+          100% {background-position: 0% 50%;}
+        }
+
+        header {
+            text-align: center;
+            margin: 40px 20px 20px 20px;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        header p {
+            max-width: 800px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .cv-container {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px 0;
+            border: 2px solid #ccc;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .cv-container iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+
+        .publications {
+            width: 90%;
+            max-width: 900px;
+            margin-bottom: 60px;
+        }
+
+        .publications h2 {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .publications ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .publications li {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .maze-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 24px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .maze-icon:hover {
+            background-color: #2980b9;
+        }
+        .bus-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            height: 80px; /* height of bus strip */
+            z-index: 10;
+        }
+
+        .bus {
+            position: absolute;
+            top: 0;
+            height: 60px;
+        }
+
+        /* Top bus moves left → right */
+        .top {
+            left: -150px;
+            animation: driveTop 25s linear infinite;
+        }
+
+        /* Bottom bus moves right → left */
+        .bottom {
+            right: -150px;
+            animation: driveBottom 30s linear infinite;
+        }
+
+        /* Keyframes for top bus */
+        @keyframes driveTop {
+            0% { left: -150px; }
+            100% { left: 100%; }
+        }
+
+        /* Keyframes for bottom bus */
+        @keyframes driveBottom {
+            0% { right: -150px; }
+            100% { right: 100%; }
+        }
+
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+        }
+
+        /* Hide the checkbox */
+        #menu-toggle {
+            display: none;
+        }
+
+        /* Hamburger icon */
+        .menu-icon {
+            font-size: 28px;
+            cursor: pointer;
+            display: block;
+            user-select: none;
+        }
+
+        /* Menu links */
+        .menu-links {
+            position: fixed;
+            top: 60px;
+            left: 20px;
+            list-style: none;
+            padding: 10px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            display: none; /* hidden by default */
+        }
+
+        /* Show menu when checkbox is checked */
+        #menu-toggle:checked + .menu-icon + .menu-links {
+            display: block;
+        }
+
+        /* Style links */
+        .menu-links li {
+            margin: 10px 0;
+        }
+
+        .menu-links li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        .menu-links li a:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="hamburger-menu">
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <ul class="menu-links">
+        <li><a href="../index.html">Maze Home</a></li>
+        <li><a href="cv.html">CV / Publications</a></li>
+        <li><a href="creative.html">Creative Projects</a></li>
+        <li><a href="llm.html">Daily Wins</a></li>
+      </ul>
+    </nav>
+    <header>
+        <h1>Nandini Iyer</h1>
+        <p>
+            I am a researcher and data scientist specializing in urban analytics, transit inequality, and human mobility.
+            My work combines computational modeling, statistical analysis, and applied data science to understand and improve equitable access to urban transit systems.
+            Here, you can explore my CV and publications.
+        </p>
+    </header>
+
+    <div class="bus-container top-bus">
+      <img src="../assets/bus.png" alt="Bus" class="bus top">
+    </div>
+
+    <div class="cv-container">
+        <iframe src="../assets/CV.pdf"></iframe>
+    </div>
+
+    <div class="publications">
+        <h2>Projects</h2>
+        <ul>
+            <li> For my paper on understanding <b> Understanding Urban-Rural Disparities in Mobility Inefficiency for Colombia, Mexico, and India. </b>, I created an interactive platform that you can <a href="https://www.riccardodiclemente.com/projects/rural_urban.html" target="_blank" style="color:blue;">access here</a>! A demo of the website is also viewable below.</li>
+
+        </ul>
+        <video controls width="100%" style="max-width:800px; border-radius:12px; margin-bottom:20px;">
+            <source src="../assets/urban_rural_demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="publications">
+        <h2>Publications</h2>
+        <h3>Published</h3>
+          <ul>
+              <li><strong>Iyer, N.</strong>, Menezes, R. & Barbosa, H., 2024. Mobility and transit segregation in urban spaces. <em>Environment and Planning B: Urban Analytics and City Science, 51(7)</em>, pp.1496-1512. <a href="https://doi.org/10.1177/23998083231219294" target="_blank" style="color:blue;">DOI</a></li>
+
+              <li><strong>Iyer, N.</strong>, Menezes, R. & Barbosa, H., 2024. The role of transport systems in housing insecurity: a mobility-based analysis. <em>EPJ Data Science, 13(1)</em>, p.49. <a href="https://doi.org/10.1140/epjds/s13688-024-00489-8" target="_blank" style="color:blue;">DOI</a></li>
+          </ul>
+
+          <h3>Conference Papers</h3>
+          <ul>
+              <li><strong>Iyer, N.</strong>, Menezes, R. & Barbosa, H., 2024, April. Public Transit Inequality in the Context of the Built Environment. In <em>International Conference on Complex Networks</em> (pp. 203-218). Cham: Springer Nature Switzerland.</li>
+
+              <li><strong>Iyer, N.</strong>, Menezes, R. & Barbosa, H., 2023, March. Network Entropy as a Measure of Socioeconomic Segregation in Residential and Employment Landscapes. In <em>International Workshop on Complex Networks</em> (pp. 26-37). Cham: Springer Nature Switzerland.</li>
+
+              <li>Faustino, J., <strong>Iyer, N.</strong>, Mendonza, J. & Menezes, R., 2020, February. Characterizing the dynamics of academic affiliations: a network science approach. In <em>Complex Networks XI: Proceedings of the 11th Conference on Complex Networks CompleNet 2020</em> (pp. 393-404). Cham: Springer International Publishing.</li>
+          </ul>
+
+          <h3>Under Review</h3>
+          <ul>
+              <li><strong>Iyer, N.</strong>, Luca, M. & Di Clemente, R., 2025. Understanding Urban-Rural Disparities in Mobility Inefficiency for Colombia, Mexico, and India. <a href="https://arxiv.org/abs/2503.01810" target="_blank" style="color:blue;">ArXiv preprint available</a>. Under Review at <em>Nature Cities</em>.</li>
+          </ul>
+
+          <h3>In Progress</h3>
+          <ul>
+              <li><strong>Iyer, N.</strong>, Luca, M., Langle-Chimal, O., González, M. C., & Di Clemente, R. Urban semantic: human mobility reveals dynamic land use functions</li>
+          </ul>
+          </div>
+
+    <a href="/index.html" class="maze-icon"> <i class="fa fa-map"></i></a>
+
+    </a>
+
+
+    <div class="bus-container bottom-bus">
+      <img src="../assets/bus_reverse.png" alt="Bus" class="bus bottom">
+    </div>
+
+
+</body>
+</html>

@@ -119,24 +119,24 @@
         }
 
         .modal-nav {
-    flex-shrink: 0; /* Ensure arrows don't shrink */
-    width: 40px; /* Fixed size for arrows */
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #555;
-    border: none;
-    color: white;
-    font-size: 18px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
+            flex-shrink: 0; /* Ensure arrows don't shrink */
+            width: 40px; /* Fixed size for arrows */
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #555;
+            border: none;
+            color: white;
+            font-size: 18px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
 
-.modal-nav:hover {
-    background: #777;
-}
+        .modal-nav:hover {
+            background: #777;
+        }
         .modal-prev {
             position: relative;
         }
@@ -188,10 +188,73 @@
       .maze-icon i {
         margin: 0;
       }
+      .hamburger-menu {
+          position: fixed;
+          top: 20px;
+          left: 20px;
+          z-index: 1001;
+      }
+
+      /* Hide the checkbox */
+      #menu-toggle {
+          display: none;
+      }
+
+      /* Hamburger icon */
+      .menu-icon {
+          font-size: 28px;
+          cursor: pointer;
+          display: block;
+          user-select: none;
+      }
+
+      /* Menu links */
+      .menu-links {
+          position: fixed;
+          top: 60px;
+          left: 20px;
+          list-style: none;
+          padding: 10px;
+          background: rgba(255,255,255,0.95);
+          border-radius: 8px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+          display: none; /* hidden by default */
+      }
+
+      /* Show menu when checkbox is checked */
+      #menu-toggle:checked + .menu-icon + .menu-links {
+          display: block;
+      }
+
+      /* Style links */
+      .menu-links li {
+          margin: 10px 0;
+      }
+
+      .menu-links li a {
+          text-decoration: none;
+          color: #333;
+          font-weight: bold;
+          transition: color 0.2s;
+      }
+
+      .menu-links li a:hover {
+          color: #007bff;
+      }
     </style>
 </head>
 <body>
     <!-- Title container -->
+    <nav class="hamburger-menu">
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <ul class="menu-links">
+        <li><a href="../index.html">Maze Home</a></li>
+        <li><a href="cv.html">CV / Publications</a></li>
+        <li><a href="creative.html">Creative Projects</a></li>
+        <li><a href="llm.html">Daily Wins</a></li>
+      </ul>
+    </nav>
     <div class="title-container">
         <img src="art_imgs/header-creative.png" alt="Title" id="pdf-title">
     </div>

@@ -82,9 +82,9 @@ const mazeHeight = 21;
 // ];
 const exitPositions = [
   { x: Math.floor(mazeWidth / 2), z: 0, url: "endpoints/creative.html" },               // Top edge (publication)
-  { x: mazeWidth - 1, z: Math.floor(mazeHeight / 2), url: "https://www.youtube.com/watch?v=ow5XgHDkPOQ" },          // Right edge (CV)
+  { x: mazeWidth - 1, z: Math.floor(mazeHeight / 2), url: "endpoints/cv.html" },          // Right edge (CV)
   { x: Math.floor(mazeWidth / 2), z: mazeHeight - 1, url: "endpoints/creative.html" },     // Bottom edge (projects)
-  { x: 0, z: Math.floor(mazeHeight / 2), url: "https://www.youtube.com/watch?v=ow5XgHDkPOQ" }                  // Left edge (contact or any other page)
+  { x: 0, z: Math.floor(mazeHeight / 2), url: "endpoints/cv.html" }                  // Left edge (contact or any other page)
 ];
 
 
