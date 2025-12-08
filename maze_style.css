@@ -4,23 +4,20 @@ body {
       position: relative;
     }
 
-    /* Panic button styles */
     .panic-button {
-        position: fixed;
-        bottom: 3vh;       /* distance from bottom relative to viewport height */
-        right: 3vw;        /* distance from right relative to viewport width */
-        display: block;
-        width: 20vw;        /* width scales with viewport width */
-        max-width: 200px;   /* optional: cap max size */
-        min-width: 40px;   /* optional: ensure minimum size */
-        z-index: 1000;
-    }
+    position: fixed;
+    bottom: 3vh;
+    right: 3vw;
+    width: clamp(50px, 30vw, 150px);
+    z-index: 1000;
+}
 
-    .panic-button img {
-        width: 100%;
-        height: auto;      /* maintain aspect ratio */
-        display: block;
-    }
+  .panic-button img {
+      width: 100%;
+      height: auto;
+      display: block;
+  }
+
 
     .panic-button:hover {
         transform: scale(1.1);
