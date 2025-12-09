@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>History Comics</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
   body {
@@ -377,8 +376,26 @@
   </ul>
 </nav>
 
-<h1>History Comics</h1>
-<p>Click a location on the map to generate a historical comic!</p>
+<!-- <h1>Historical Comics</h1>
+<p>Click a location on the map to generate a historical comic! </p>
+<p>Default creates a timeline, which is more environmentally friendly. </p>
+<p>Save some water and generate comic panels with discretion!! </p> -->
+<h1>Historical Comics</h1>
+<div style="max-width: 600px; margin: 0 auto 30px auto; text-align: center;">
+  <p style="color: #ccc; font-size: 16px; margin-bottom: 15px;">
+    Discover the hisotry of any location worldwide.
+    Click anywhere on the map to learn more about a city's history.
+  </p>
+  <div style="background: #2a2a2a; border: 3px solid #ffba66; padding: 12px 20px; border-radius: 4px; text-align: left; margin-top: 20px;">
+    <p style="color: #f39c12; margin: 0 0 5px 0; font-weight: bold; font-size: 14px;">
+      Sustainability Note
+    </p>
+    <p style="color: #aaa; margin: 0; font-size: 14px; line-height: 1.5;">
+      The <b>Timeline View (default)</b> provides rich historical content with minimal environmental impact.
+      Comic Panels with AI-generated imagery consume additional computational resources so please use thoughtfully.
+    </p>
+  </div>
+</div>
 
 <div id="map"></div>
 
@@ -517,7 +534,7 @@ map.on('click', async function(e) {
   if (marker) marker.remove();
   marker = L.marker([lat, lng]).addTo(map);
 
-  comicDiv.innerHTML = `<div class="loading">Generating content for (${lat.toFixed(2)}, ${lng.toFixed(2)})...</div>`;
+  comicDiv.innerHTML = `<div class="loading">Fetching history for (${lat.toFixed(2)}, ${lng.toFixed(2)})...</div>`;
   comicHeader.innerHTML = "";
 
   try {
