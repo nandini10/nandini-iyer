@@ -473,8 +473,10 @@ withImagesBtn.addEventListener('click', () => {
 });
 
 function generateImageUrl(description, panelNum) {
+  if (!generateImages) return null;
   const prompt = `comic book style, ${description}`;
-  return `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=800&height=600&seed=${panelNum}`;
+  return `https://geo-comics.nandiniiyer98.workers.dev/image-proxy?prompt=${encodeURIComponent(prompt)}&seed=${panelNum}`;
+  // return `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=800&height=600&seed=${panelNum}`;
 }
 
 function renderComic(data) {
