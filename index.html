@@ -10,26 +10,21 @@
 </head>
 <body>
   <div id="popup" class="modal-overlay">
-    <div class="modal">
-      <span id="close-btn" class="close-btn">×</span>
-      <div class="modal-title">Trapped in a maze..again?! Bad things really do happen to good people, but if you manage to exit, maybe something good can come of this. </div>
-      <div class="modal-body">
-        Use <strong>WASD</strong> to move.<br>
-        Use <strong>Q</strong> to look up and <strong>E</strong> to look down.
-        <div class="icon-container">
-          <span class="icon-label">Or use:</span>
-          <i class="fa-solid fa-arrow-up icon"></i>
-          <i class="fa-solid fa-arrow-left icon"></i>
-          <i class="fa-solid fa-arrow-down icon"></i>
-          <i class="fa-solid fa-arrow-right icon"></i>
-        </div>
-
-      </div>
-      <div class="modal-buttons">
-        <button class="btn btn-close" id="close-btn-footer">Close</button>
-      </div>
+  <div class="modal">
+    <span id="close-btn" class="close-btn">×</span>
+    <div class="modal-title">
+      <strong>Lost in the maze..again?</strong> Good things await at the exits!
+      If you need a quick escape, use the panic button in the corner.
+    </div>
+    <div class="modal-body">
+      <p><strong>Movement:</strong> WASD or Arrow Keys</p>
+      <p><strong>Look Up/Down:</strong> Q / E</p>
+    </div>
+    <div class="modal-buttons">
+      <button class="btn btn-close" id="close-btn-footer">Start Game</button>
     </div>
   </div>
+</div>
 
   <canvas id="minimap" style="position: absolute; top: 20px; left: 20px; background: #ffffff;"></canvas>
 

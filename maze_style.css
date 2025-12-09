@@ -82,27 +82,23 @@ body {
     }
 
     /* Modal title */
-    .modal-title {
-      font-size: 20px;
-      font-weight: bold;
-      margin: 0;
-      margin-bottom: 10px;
-      text-align: center;
+    .modal-title strong {
+  color: #750e00;
+}
+
+    .modal-body p {
+      margin: 10px 0;
     }
 
-    .modal-title {
-      font-size: 20px;
-      font-weight: bold;
-      margin: 0;
-      margin-bottom: 10px;
+    .modal-body strong {
+      color: #750e00;
     }
-
     /* Modal body */
-    .modal-body {
+    /* .modal-body {
       font-size: 16px;
       color: #555;
       margin-bottom: 20px;
-    }
+    } */
 
     /* Arrow key icon section */
     .icon-container {
